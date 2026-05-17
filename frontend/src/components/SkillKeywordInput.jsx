@@ -1,16 +1,42 @@
 import { useMemo, useState } from 'react';
 
 const skillKeywords = [
-  'JavaScript', 'TypeScript', 'React', 'Vue.js', 'Angular', 'Svelte', 'Next.js', 'Node.js', 'Express.js', 'NestJS',
-  'MongoDB', 'MySQL', 'PostgreSQL', 'SQLite', 'Redis', 'GraphQL', 'REST API', 'Docker', 'Kubernetes', 'AWS',
-  'Azure', 'GCP', 'Firebase', 'Supabase', 'Tailwind CSS', 'Bootstrap', 'Material UI', 'Chakra UI', 'Redux', 'Zustand',
-  'Context API', 'HTML5', 'CSS3', 'SASS', 'Less', 'Webpack', 'Vite', 'Jest', 'Vitest', 'Cypress',
-  'Playwright', 'Testing Library', 'Git', 'GitHub', 'CI/CD', 'Linux', 'Nginx', 'Apache', 'Python', 'Django',
-  'Flask', 'FastAPI', 'Java', 'Spring Boot', 'C#', '.NET', 'PHP', 'Laravel', 'Ruby', 'Rails',
-  'Go', 'Rust', 'C++', 'C', 'Data Structures', 'Algorithms', 'OOP', 'DSA', 'Agile', 'Scrum',
-  'Jira', 'Figma', 'UI/UX', 'Responsive Design', 'Mobile Development', 'Android', 'iOS', 'Flutter', 'React Native', 'Node.js API',
-  'Authentication', 'Authorization', 'JWT', 'OAuth', 'Microservices', 'System Design', 'Performance Optimization', 'SEO', 'Accessibility', 'Cloud Computing',
-  'Machine Learning', 'Deep Learning', 'AI', 'NLP', 'TensorFlow', 'PyTorch', 'Computer Vision', 'Data Analysis', 'Power BI', 'Tableau',
+  'JavaScript', 'TypeScript', 'Python', 'Java', 'C', 'C++', 'C#', 'Go', 'Rust', 'Kotlin',
+  'Swift', 'Dart', 'R', 'PHP', 'Ruby', 'Scala', 'MATLAB', 'Bash', 'PowerShell', 'SQL',
+
+  'HTML5', 'CSS3', 'SASS', 'LESS', 'Tailwind CSS', 'Bootstrap', 'Material UI', 'Chakra UI', 'Shadcn UI', 'Styled Components',
+  'React', 'Next.js', 'Vue.js', 'Nuxt.js', 'Angular', 'Svelte', 'Remix', 'Redux', 'Zustand', 'Context API',
+  'React Query', 'TanStack Query', 'Framer Motion', 'Three.js', 'WebGL', 'D3.js', 'Chart.js', 'Recharts', 'Vite', 'Webpack',
+
+  'Node.js', 'Express.js', 'NestJS', 'Fastify', 'Django', 'Flask', 'FastAPI', 'Spring Boot', '.NET', 'ASP.NET Core',
+  'Laravel', 'Ruby on Rails', 'Gin', 'Echo', 'GraphQL', 'REST API', 'gRPC', 'Socket.IO', 'WebSockets', 'Microservices',
+  'System Design', 'Monolith', 'Event-Driven Architecture', 'Message Queues', 'Apache Kafka', 'RabbitMQ', 'Redis Streams', 'API Gateway', 'Rate Limiting', 'Caching',
+
+  'MongoDB', 'Mongoose', 'MySQL', 'PostgreSQL', 'SQLite', 'MariaDB', 'Oracle DB', 'SQL Server', 'Redis', 'Elasticsearch',
+  'Firebase', 'Supabase', 'Prisma', 'Sequelize', 'TypeORM', 'Drizzle ORM', 'Data Modeling', 'Database Indexing', 'Query Optimization', 'ETL',
+
+  'AWS', 'Azure', 'GCP', 'DigitalOcean', 'Vercel', 'Netlify', 'Render', 'Heroku', 'Docker', 'Kubernetes',
+  'Terraform', 'Ansible', 'Jenkins', 'GitHub Actions', 'GitLab CI/CD', 'CircleCI', 'Prometheus', 'Grafana', 'Nginx', 'Apache',
+  'Linux', 'Ubuntu', 'Cloud Computing', 'Serverless', 'Lambda', 'Cloud Functions', 'DevOps', 'SRE', 'Load Balancing', 'CDN',
+
+  'Git', 'GitHub', 'Bitbucket', 'CI/CD', 'Unit Testing', 'Integration Testing', 'End-to-End Testing', 'Jest', 'Vitest', 'Mocha',
+  'Chai', 'Cypress', 'Playwright', 'Selenium', 'Testing Library', 'Postman', 'Swagger', 'OpenAPI', 'SonarQube', 'Code Review',
+
+  'Machine Learning', 'Deep Learning', 'Artificial Intelligence', 'AI', 'NLP', 'LLM', 'Generative AI', 'Prompt Engineering', 'RAG', 'Fine-Tuning',
+  'LangChain', 'LlamaIndex', 'Hugging Face', 'Transformers', 'OpenAI API', 'OpenRouter API', 'TensorFlow', 'Keras', 'PyTorch', 'Scikit-learn',
+  'XGBoost', 'LightGBM', 'Computer Vision', 'OpenCV', 'MLOps', 'MLflow', 'Kubeflow', 'Feature Engineering', 'Model Deployment', 'Model Monitoring',
+  'Data Science', 'Data Analysis', 'Pandas', 'NumPy', 'SciPy', 'Matplotlib', 'Seaborn', 'Plotly', 'Power BI', 'Tableau',
+  'Big Data', 'Hadoop', 'Spark', 'Databricks', 'Airflow', 'Snowflake', 'Data Warehouse', 'Data Engineering', 'Time Series Forecasting', 'Reinforcement Learning',
+
+  'AR', 'VR', 'AR/VR', 'XR', 'Unity', 'Unreal Engine', 'ARKit', 'ARCore', 'Mixed Reality', '3D Modeling',
+
+  'Android', 'iOS', 'React Native', 'Flutter', 'Ionic', 'Xamarin', 'Mobile Development', 'PWA', 'Responsive Design', 'Cross-Platform Development',
+
+  'Cybersecurity', 'Network Security', 'Application Security', 'OWASP', 'Penetration Testing', 'Vulnerability Assessment', 'JWT', 'OAuth2', 'OpenID Connect', 'Authentication',
+  'Authorization', 'RBAC', 'SSO', 'Encryption', 'Hashing', 'Security Auditing',
+
+  'Agile', 'Scrum', 'Kanban', 'Jira', 'Confluence', 'Figma', 'UI/UX', 'Communication', 'Problem Solving', 'Team Leadership',
+  'DSA', 'Data Structures', 'Algorithms', 'OOP', 'SOLID Principles', 'Design Patterns', 'Performance Optimization', 'Scalability', 'SEO', 'Accessibility',
 ];
 
 const normalizeValue = (value) =>
@@ -30,14 +56,17 @@ export default function SkillKeywordInput({
   const [focused, setFocused] = useState(false);
 
   const currentSkills = useMemo(() => normalizeValue(value), [value]);
-  const activeToken = normalizeValue(value).at(-1) || '';
+  const activeToken = useMemo(() => {
+    const segments = String(value || '').split(',');
+    return (segments[segments.length - 1] || '').trim();
+  }, [value]);
 
   const suggestions = useMemo(() => {
     const search = activeToken.toLowerCase();
     return skillKeywords
       .filter((skill) => !currentSkills.some((existing) => existing.toLowerCase() === skill.toLowerCase()))
       .filter((skill) => !search || skill.toLowerCase().includes(search))
-      .slice(0, 10);
+        .slice(0, 14);
   }, [activeToken, currentSkills]);
 
   const updateValue = (nextSkills) => {
@@ -45,9 +74,22 @@ export default function SkillKeywordInput({
   };
 
   const handleSelect = (skill) => {
-    const existingSkills = normalizeValue(value);
-    if (!existingSkills.some((item) => item.toLowerCase() === skill.toLowerCase())) {
-      updateValue([...existingSkills.slice(0, Math.max(0, existingSkills.length - 1)), skill]);
+    const rawValue = String(value || '');
+    const rawSegments = rawValue.split(',');
+    const committedSkills = rawSegments
+      .slice(0, -1)
+      .map((item) => item.trim())
+      .filter(Boolean);
+    const endsWithComma = /,\s*$/.test(rawValue);
+    const activeIsKnownKeyword = skillKeywords.some(
+      (keyword) => keyword.toLowerCase() === activeToken.toLowerCase()
+    );
+
+    // Replace only an in-progress token; otherwise append to existing selected skills.
+    const baseSkills = endsWithComma || activeIsKnownKeyword ? currentSkills : committedSkills;
+
+    if (!baseSkills.some((item) => item.toLowerCase() === skill.toLowerCase())) {
+      updateValue([...baseSkills, skill]);
     }
   };
 
