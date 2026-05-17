@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 const navItems = [
   { label: 'Dashboard', to: '/' },
   { label: 'Add Candidate', to: '/add-candidate' },
-  { label: 'Match Candidates', to: '/match-candidates' },
+  { label: 'Match Candidates', to: '/match-candidates', remark: 'AI Recommended' },
   { label: 'Saved Candidates', to: '/saved-candidates' },
 ];
 
@@ -28,12 +28,15 @@ export default function Navbar() {
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
-                `rounded-2xl px-4 py-2 text-sm font-medium transition ${
+                `rounded-2xl px-4 py-2 text-sm transition ${
                   isActive ? 'bg-white/15 text-white shadow-lg' : 'text-slate-300 hover:bg-white/10 hover:text-white'
                 }`
               }
             >
-              {item.label}
+              <span className="flex flex-col leading-tight">
+                <span className="font-medium">{item.label}</span>
+                {item.remark ? <span className="text-[10px] uppercase tracking-[0.16em] text-cyan-300">{item.remark}</span> : null}
+              </span>
             </NavLink>
           ))}
         </nav>

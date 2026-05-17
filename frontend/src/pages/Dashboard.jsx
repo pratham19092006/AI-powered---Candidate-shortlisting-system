@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { getCandidates, matchCandidates } from '../api/api';
 import CandidateTable from '../components/CandidateTable';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -69,6 +70,14 @@ export default function Dashboard() {
             <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
               This dashboard combines candidate analytics, deterministic skill matching, and OpenRouter-powered ranking for a polished semester-project presentation.
             </p>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <Link to="/match-candidates" className="primary-button">
+                Match Candidates
+              </Link>
+              <span className="rounded-full border border-cyan-300/30 bg-cyan-400/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-200">
+                AI Recommended
+              </span>
+            </div>
             {analysis?.message ? <p className="mt-4 text-sm text-emerald-300">{analysis.message}</p> : null}
           </div>
 
@@ -128,7 +137,9 @@ export default function Dashboard() {
             <h3 className="section-title">Recent Candidates</h3>
             <p className="section-subtitle">Latest profiles appear first, which helps recruiters focus on fresh submissions.</p>
           </div>
-          <CandidateTable rows={candidates.slice(0, 5)} emptyMessage="No candidates have been added yet." />
+          <div className="max-h-[460px] overflow-y-auto rounded-3xl">
+            <CandidateTable rows={candidates} emptyMessage="No candidates have been added yet." />
+          </div>
         </div>
       </section>
     </div>
