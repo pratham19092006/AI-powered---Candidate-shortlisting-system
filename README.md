@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Candidate Shortlisting System
 
 An AI-powered full stack recruitment dashboard built with the MERN stack and OpenRouter integration. Recruiters can add candidates, score them using skill matching and experience logic, ask OpenRouter to rank them intelligently, save shortlisted profiles, and generate interview questions.
@@ -182,3 +183,7 @@ Add screenshots of the dashboard, add candidate form, matching screen, and saved
 
 - If OpenRouter is unavailable or the API key is missing, the backend falls back to deterministic shortlist generation so the app remains usable.
 - MongoDB must be running locally or connected through a cloud URI for persistence.
+=======
+# AI-powered---Candidate-shortlisting-system
+AI-powered candidate shortlisting system using MERN stack and OpenRouter. Recruiters can add candidates, match skills, rank profiles, save shortlists, generate interview questions, and view responsive analytics dashboard in one place.
+>>>>>>> 7c4463256e9b51dd213dc301c0408aaf670d8c18
